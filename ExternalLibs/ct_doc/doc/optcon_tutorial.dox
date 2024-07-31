@@ -1,0 +1,153 @@
+/*!
+@page optcon_tutorials ct optcon Tutorials
+
+In this tutorial we will walk you through implementing several Optimal Controllers for your system, including a basic LQR controller,
+a Nonlinear Optimal Controller (NLOC), a Nonlinear Model Predictive Controller (NMPC) as well as Direct Multiple Shooting (DMS).
+- \subpage optcon_tut_lqr
+- \subpage optcon_tut_nloc
+- \subpage optcon_tut_nloc_box_constrained
+- \subpage optcon_tut_nloc_gen_constrained
+- \subpage optcon_tut_mpc
+- \subpage optcon_tut_dms
+- \subpage optcon_tut_nlp
+- \subpage optcon_tut_ekf
+- \subpage optcon_tut_disturbance_ekf
+
+
+\page optcon_tut_lqr LQR Control of a Damped Oscillator
+In this example, we will take an existing damped oscillator model, linearize the (already linear) dynamics around the steady state
+ using Auto-Differentiation with Code Generation and finally design an LQR controller based on the linearized model.
+
+\include LQR.cpp
+
+You can run this example with the following command
+
+\code{.sh}
+rosrun ct_optcon ex_LQR
+\endcode
+
+\note Make sure you have built the examples before trying to run it.
+
+
+\page optcon_tut_nloc Optimal control of a Damped Oscillator
+
+This example shows how to use the nonlinear optimal control solvers iLQR, unconstrained Gauss-Newton-Multiple-Shooting (GNMS),
+as well as the hybrid methods iLQR-GNMS(M), where M denotes the number of multiple-shooting intervals.
+
+\include NLOC.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_NLOC
+\endcode
+
+
+\page optcon_tut_nloc_box_constrained Box-constrained nonlinear Optimal Control
+
+In this example, we show how to set up a box-constrained variation of the nonlinear optimal control solver from the previous example.
+
+\note This example requires the HPIPM solver to be installed.
+
+\include NLOC_boxConstrained.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_NLOC_boxConstrained
+\endcode
+
+
+\page optcon_tut_nloc_gen_constrained Generally-constrained nonlinear Optimal Control
+
+In this example, we show how to set up a generally-constrained variation of the nonlinear optimal control solver from the previous example.
+
+\note This example requires the HPIPM solver to be installed.
+
+\include NLOC_generalConstrained.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_NLOC_generalConstrained
+\endcode
+
+
+\page optcon_tut_mpc Model Predictive Control for a Damped Oscillator
+
+In this example we show how to use a Nonlinear Optimal Control solver (here iLQG) in combination with the MPC-class for out-of-the box Model Predictive Control.
+
+\include NLOC_MPC.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_NLOC_MPC
+\endcode
+
+
+\page optcon_tut_dms Classical, Constrained Direct Multiple Shooting for a Damped Oscillator
+
+In this example, we show how to solve an Optimal Control problem for a oscillator system using classical Direct Multiple Shooting with an NLP solver backend.
+
+\note Generally, we suggest using a Gauss-Newton Multiple Shooting (ct::optcon::GNMS) approach due to its linear time complexity
+and faster computation. For problems with a fine control discretization, it typically performs better than classical DMS.
+
+\note This example requires either <a href="https://projects.coin-or.org/Ipopt">IPOPT</a> or
+<a href="http://www.sbsi-sol-optimize.com/asp/sol_product_snopt.htm">SNOPT</a> to be installed. If you have a global installation
+of one of these solvers, and an environment variable set, it will be automatically detected.
+
+\include DMS.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_DMS
+\endcode
+
+
+\page optcon_tut_nlp Simple Examples for Nonlinear Programming
+
+\note these examples show how to set up a very simple nonlinear program and solve it using IPOPT.
+
+\include nlp/Nlp2D.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_Nlp_2D
+\endcode
+
+
+\include nlp/Nlp3D.cpp
+
+You can run this example with the following command
+\code{.sh}
+rosrun ct_optcon ex_Nlp_3D
+\endcode
+
+
+
+\page optcon_tut_ekf Extended Kalman Filtering 
+
+This example demonstrates how to set up an Extended Kalman Filter. We simulate a system, add noise to the observations and then 
+compute state estimates using the EKF class.
+
+\include KalmanFiltering.cpp
+
+You can run this example with the following command
+
+\code{.sh}
+rosrun ct_optcon ex_KalmanFiltering
+\endcode
+
+
+\page optcon_tut_disturbance_ekf Extended Kalman Filter as Disturbance Observer
+
+Here, we use an Extended Kalman Filter to observer an input-disturbance to a simple example system. 
+We simulate a system, subjet to noise and a time-varying disturbance, add noise to the observations and then 
+compute state and disturbance estimates using an EKF.
+
+\include KalmanDisturbanceFiltering.cpp
+
+You can run this example with the following command
+
+\code{.sh}
+rosrun ct_optcon ex_KalmanDisturbanceFiltering
+\endcode
+
+ */
