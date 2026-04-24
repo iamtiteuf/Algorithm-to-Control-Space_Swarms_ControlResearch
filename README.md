@@ -19,7 +19,7 @@ a given formation shape is given. This involves fine-tuning the parameters gover
 the attractive and repulsive forces to achieve this formation. Both approaches are
 evaluated through numerical analysis and visual simulations.
 
-[Paper.pdf](https://github.com/user-attachments/files/19293578/Ndenecho.2.pdf)
+[PaperSummary.pdf](https://github.com/user-attachments/files/19293578/Ndenecho.2.pdf)
 
 https://github.com/user-attachments/assets/6d74de68-5314-439a-9283-51d4b5a11d0a
 
